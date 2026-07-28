@@ -10,4 +10,3 @@ venv/
 .idea/
 .vscode/
 *.ipynb_checkpoints/
-modelTraining/*.pkl
