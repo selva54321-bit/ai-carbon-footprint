@@ -54,7 +54,12 @@ BUILDINGS = [
 
 app = FastAPI(title="Campus Carbon AI Backend", version="1.0.0")
 
-allowed_origins = ["http://localhost:5173", "http://127.0.0.1:5173"]
+allowed_origins = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "https://sparkling-sawine-0a6526.netlify.app",
+    "https://*.netlify.app",
+]
 extra_origins = os.getenv("ALLOWED_ORIGINS", "")
 if extra_origins:
     allowed_origins.extend(origin.strip() for origin in extra_origins.split(",") if origin.strip())
