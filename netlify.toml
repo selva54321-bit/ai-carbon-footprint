@@ -1,6 +1,9 @@
 [build]
-  command = "cd frontEnd && npm run build"
+  command = "cd frontEnd && npm ci && npm run build"
   publish = "frontEnd/dist"
+
+[build.environment]
+  NODE_ENV = "development"
 
 [[redirects]]
   from = "/*"
