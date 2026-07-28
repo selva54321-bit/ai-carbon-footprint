@@ -459,15 +459,15 @@ def _dashboard(day_index: int, solar: int = 20, bus: int = 70, led: int = 50) ->
         },
         "nextDayPrediction": _prediction_detail(day_index),
         "summary": {
-            "carbon": _round(carbon),
-            "change": _round(change),
-            "forecastCarbon": _round(forecast[0]["carbon"]),
-            "solarOffset": _round(solar_offset),
-            "score": round(score),
-            "goalProgress": round((carbon * 30 / 100000) * 100),
-            "topBuilding": ranked[0]["name"],
-            "statusTone": "alert" if change > 3 else "positive" if change < -2 else "steady",
-        },
+                "carbon": _round(carbon),
+                "change": _round(change),
+                "forecastCarbon": _round(_predict_next(row)),
+                "solarOffset": _round(solar_offset),
+                "score": round(score),
+                "goalProgress": round((carbon * 30 / 100000) * 100),
+                "topBuilding": ranked[0]["name"],
+                "statusTone": "alert" if change > 3 else "positive" if change < -2 else "steady",
+            },
     }
 
 
