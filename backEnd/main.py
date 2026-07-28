@@ -466,6 +466,16 @@ def _dashboard(day_index: int, solar: int = 20, bus: int = 70, led: int = 50) ->
     }
 
 
+@app.get("/")
+def root() -> dict[str, Any]:
+    return {
+        "ok": True,
+        "message": "Campus Carbon AI API is running",
+        "docs": "/docs",
+        "health": "/api/health",
+    }
+
+
 @app.get("/api/health")
 def health() -> dict[str, Any]:
     return {
