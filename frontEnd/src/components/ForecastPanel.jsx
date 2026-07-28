@@ -1,7 +1,7 @@
 import LineChart from './LineChart.jsx';
 
-export default function ForecastPanel({ forecastPoints, formatKg }) {
-  const forecastDetail = forecastPoints.length > 4 ? `Tomorrow is projected at ${formatKg(forecastPoints[4].carbon)}, reflecting solar output and campus demand changes.` : 'Forecast model warming up.';
+export default function ForecastPanel({ forecastPoints, formatKg, modelName }) {
+  const forecastDetail = forecastPoints.length > 4 ? `Tomorrow is projected at ${formatKg(forecastPoints[4].carbon)} using the trained ${modelName || 'ML'} model.` : 'Forecast model warming up.';
 
   return (
     <section className="panel">

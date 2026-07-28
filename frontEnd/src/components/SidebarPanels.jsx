@@ -62,7 +62,7 @@ export function BuildingDetailPanel({ selectedBuildingData, selectedBuilding, bu
   );
 }
 
-export function RankingPanel({ topDepartment }) {
+export function RankingPanel({ ranking }) {
   return (
     <section className="panel">
       <div className="panel-head">
@@ -73,10 +73,10 @@ export function RankingPanel({ topDepartment }) {
         <span className="muted">Efficiency score</span>
       </div>
       <div className="ranking">
-        {topDepartment.map((name, index) => (
-          <div key={name} className="ranking-item">
-            <span>{index + 1}. {name}</span>
-            <strong>{100 - index * 6}</strong>
+        {ranking.slice(0, 5).map((item, index) => (
+          <div key={item.name} className="ranking-item">
+            <span>{index + 1}. {item.name}</span>
+            <strong>{item.score}</strong>
           </div>
         ))}
       </div>
