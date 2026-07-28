@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import csv
 import io
+import os
 from pathlib import Path
 from typing import Any
 
@@ -52,9 +53,14 @@ BUILDINGS = [
 
 app = FastAPI(title="Campus Carbon AI Backend", version="1.0.0")
 
+allowed_origins = ["http://localhost:5173", "http://127.0.0.1:5173"]
+extra_origins = os.getenv("ALLOWED_ORIGINS", "")
+if extra_origins:
+    allowed_origins.extend(origin.strip() for origin in extra_origins.split(",") if origin.strip())
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
